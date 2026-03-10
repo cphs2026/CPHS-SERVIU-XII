@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CPHS — SERVIU Magallanes (XII Región)</title>
+<link rel="icon" href="favicon.ico">
+<meta name="description" content="Comité Paritario de Higiene y Seguridad del SERVIU Magallanes: noticias, actividades y materiales de prevención." />
+<style>
+:root{--azul:#0f69b4;--rojo:#eb3c46;--azulosc:#0a132d;--gris:#f4f6f8;--borde:#e0e6eb;--txt:#1f2937;--ambar:#f59e0b;--verde:#2ecc71;--rojo2:#e11d48}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--gris);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;line-height:1.55}
+.band{height:6px;background:linear-gradient(90deg,var(--azul) 0 70%,var(--rojo) 70% 100%)}
+header{background:#fff;border-bottom:1px solid var(--borde)}
+.h-in{max-width:1100px;margin:0 auto;display:flex;gap:12px;align-items:center;padding:14px 16px}
+.logo img{height:60px;width:auto;display:block}
+.h-tt small{color:#4b5563;font-weight:600}
+.h-tt strong{color:var(--azulosc)}
+.navw{background:var(--azul);color:#fff;position:sticky;top:0;z-index:5;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.nav{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 .5rem}
+.brand{color:#fff;text-decoration:none;font-weight:800;padding:.85rem .25rem}
+.toggle{display:none;background:none;border:0;color:#fff;padding:.7rem .8rem}
+ul.menu{list-style:none;display:flex;gap:.25rem;margin:0;padding:0}
+.menu>li{position:relative}
+.menu a,.menu button{color:#fff;text-decoration:none;padding:.9rem .9rem;border-radius:8px;font-weight:700;background:none;border:0}
+.menu a:hover,.menu button:hover{background:rgba(255,255,255,.12)}
+.dropdown>button{display:flex;gap:.35rem;align-items:center}
+.drop{position:absolute;left:0;top:100%;min-width:240px;background:#0d4573;color:#fff;border-radius:12px;margin-top:.25rem;padding:.4rem;box-shadow:0 10px 20px rgba(0,0,0,.2);display:none}
+.drop a{display:block;padding:.7rem .9rem;border-radius:8px;font-weight:700}
+@media(hover:hover){.dropdown:hover .drop{display:block}}
+main{max-width:1100px;margin:22px auto;padding:0 16px}
+section{background:#fff;margin:16px 0;padding:22px;border-radius:14px;box-shadow:0 3px 10px rgba(0,0,0,.06)}
+section h2{margin:0 0 8px;color:var(--azulosc)}
+.lead{color:#4b5563}
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{border:1px solid var(--borde);border-radius:12px;padding:14px;position:relative}
+.form-control{width:100%;padding:.7rem;border:1px solid var(--borde);border-radius:10px}
+.btn{display:inline-block;border:0;cursor:pointer;font-weight:800;padding:.55rem .85rem;border-radius:10px}
+.bpri{background:var(--azul);color:#fff}
+.bamb{background:var(--ambar)}
+.bdan{background:var(--rojo2);color:#fff}
+.bout{background:#fff;color:var(--azul);border:2px solid var(--azul)}
+.edit-toggle{position:fixed;top:10px;right:12px;z-index:10;background:var(--ambar);border:0;border-radius:999px;padding:.55rem .9rem;font-weight:900}
+.admin{position:fixed;right:16px;bottom:16px;display:none;flex-direction:column;gap:10px;z-index:10}
+.admin-box{position:fixed;top:82px;right:16px;width:320px;max-width:92vw;background:#fff;border:1px solid var(--borde);border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.12);padding:12px;display:none}
+.edit-on .only{display:inline-flex}
+.only{display:none}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
+.box{width:100%;max-width:560px;background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px}
+.top-btn{position:fixed;right:16px;bottom:86px;background:#0d4573;color:#fff;border:0;border-radius:999px;padding:.55rem .7rem;font-weight:900;display:none}
+.top-btn.show{display:inline-block}
+footer{margin-top:28px;background:#0f2640;color:#dbe7f3;border-top:4px solid var(--rojo)}
+.fi{max-width:1100px;margin:0 auto;padding:18px 16px}
+.lastupd{opacity:.9;font-size:.9rem}
+@media(max-width:920px){.toggle{display:block} ul.menu{display:none;flex-direction:column}.menu.show{display:flex}.drop{position:static;display:none}.dropdown.open .drop{display:block}}
+</style>
+</head>
+<body>
+<div class="band" aria-hidden="true"></div>
+<button id="btnEdit" class="edit-toggle">⚙️ Modo edición</button>
+<a href="#inicio" id="btnTop" class="top-btn" title="Volver arriba">▲</a>
+<header><div class="h-in">
+  <a class="logo" href="https://serviumagallanes.minvu.gob.cl/" target="_blank" rel="noopener" aria-label="Sitio SERVIU Magallanes"><img src="img/logo-serviu.png" alt="SERVIU Magallanes — MINVU: Logo institucional"></a>
+  <div class="h-tt"><small>Ministerio de Vivienda y Urbanismo</small><br><strong>SERVIU — Región de Magallanes y de la Antártica Chilena</strong><br><small>Comité Paritario de Higiene y Seguridad (CPHS)</small></div>
+</div></header>
+<div class="navw" role="navigation" aria-label="Navegación principal"><div class="nav">
+  <a class="brand" href="#inicio">CPHS</a>
+  <button class="toggle" id="btnMenu" aria-expanded="false" aria-controls="menu">☰ Menú</button>
+  <ul class="menu" id="menu">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#quienes">Quiénes Somos</a></li>
+    <li><a href="#objetivo">Objetivo</a></li>
+    <li class="dropdown"><button type="button">Secciones ▾</button>
+      <div class="drop">
+        <a href="#noticias">Noticias y Anuncios</a>
+        <a href="#actividades">Actividades</a>
+        <a href="#materiales">Materiales</a>
+        <a href="#reporte">Reporte de Incidentes</a>
+      </div>
+    </li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</div></div>
+<main>
+  <section id="inicio"><h2>Inicio</h2><p class="lead">Bienvenidos al sitio del <strong>Comité Paritario de Higiene y Seguridad (CPHS)</strong> del SERVIU Magallanes. Aquí publicamos noticias, actividades y recursos de prevención para nuestro equipo y la ciudadanía.</p></section>
+  <section id="quienes"><h2>Quiénes Somos</h2><p>El CPHS promueve ambientes de trabajo seguros y saludables, articulando medidas preventivas y correctivas en coordinación con las áreas internas.</p><h3>Integrantes</h3><ul id="listaIntegrantes"></ul><div class="only"><button id="addIntegrante" class="btn bpri">➕ Agregar integrante</button></div></section>
+  <section id="objetivo"><h2>Objetivo</h2><p>Prevenir riesgos, investigar incidentes, proponer mejoras y promover la participación activa de las y los funcionarios en seguridad y salud en el trabajo.</p></section>
+  <section id="noticias"><h2>Noticias y Anuncios</h2><div id="cards" class="news"></div><div class="only" style="margin-top:8px"><button id="addNoticia" class="btn bpri">📰 Agregar noticia</button></div></section>
+  <section id="actividades"><h2>Actividades</h2><ul id="listaActividades"></ul><div class="only"><button id="addActividad" class="btn bpri">➕ Agregar actividad</button></div></section>
+  <section id="materiales"><h2>Materiales</h2><ul id="listaMateriales"></ul><div class="only"><button id="addMaterial" class="btn bpri">📎 Agregar material</button></div></section>
+  <section id="reporte"><h2>Reporte de Incidentes</h2><form onsubmit="alert('¡Gracias! Tu reporte fue enviado.'); return false;"><label>Nombre (opcional)<br><input class="form-control" type="text"></label><br><br><label>Descripción del incidente/condición<br><textarea class="form-control" rows="4" required></textarea></label><br><br><label>Ubicación<br><input class="form-control" type="text"></label><br><br><button class="btn bpri" type="submit">Enviar reporte</button></form></section>
+  <section id="contacto"><h2>Contacto</h2><p><strong>Comité Paritario — SERVIU Magallanes</strong><br>Croacia 722, Punta Arenas, Magallanes y de la Antártica Chilena.<br>Teléfono: +56 61 2714441 · Horario atención OIRS: Lun–Vie 09:00–13:00.<br>Email: <a href="mailto:cphs@serviumagallanes.minvu.gob.cl">cphs@serviumagallanes.minvu.gob.cl</a></p></section>
+</main>
+<div class="admin only" id="adminBar"><button class="btn bamb" id="btnAdmin">🛠️ Panel</button></div>
+<div class="admin-box" id="panel"><strong>Administración</strong>
+  <div style="margin:8px 0;display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn bout" id="btnBackup">⬇️ Exportar JSON</button>
+    <label class="btn bout" for="fileRestore" style="cursor:pointer">⬆️ Importar (vista previa)</label>
+    <input type="file" id="fileRestore" accept="application/json" style="display:none">
+    <button class="btn bout" id="btnReload">🔄 Recargar content.json</button>
+  </div>
+  <small>Tras editar, exporta y reemplaza <code>content.json</code> en el repositorio.</small>
+</div>
+<footer><div class="fi"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:space-between"><div>© 2026 SERVIU Magallanes — CPHS</div><div class="lastupd">Última actualización de contenidos: <span id="lastUpdated">—</span></div></div></div></footer>
+<script>
+(function(){
+  const CONTENT_URL='content.json';
+  const PIN_HASH_HEX='d2ee5cde084259b71b44afdf8ce4d4a6c66c99aa87b1a762d2a642826e2c674c';
+  const U=sel=>document.querySelector(sel);
+  const L=(el,ev,fn)=>el&&el.addEventListener(ev,fn);
+  let data={integrantes:[],actividades:[],materiales:[],noticias:[]};
+
+  document.addEventListener('DOMContentLoaded', init);
+
+  async function init(){
+    bindStaticNav();
+    bindEditToggle();
+    bindAdminPanel();
+    bindAddButtons();
+    try{ data = await fetchContent(); }catch(e){ console.warn(e); }
+    renderAll();
+    setLastUpdated();
+  }
+
+  function bindStaticNav(){
+    const btnMenu=U('#btnMenu'), menu=U('#menu');
+    L(btnMenu,'click',()=>{
+      const ex=btnMenu.getAttribute('aria-expanded')==='true';
+      btnMenu.setAttribute('aria-expanded', String(!ex));
+      menu.classList.toggle('show');
+    });
+    const dd=document.querySelector('.dropdown');
+    if(dd){
+      const dBtn=dd.querySelector('button');
+      L(dBtn,'click',e=>{e.stopPropagation();dd.classList.toggle('open');});
+      L(document,'click',e=>{ if(!dd.contains(e.target)) dd.classList.remove('open'); });
+    }
+    const topBtn=U('#btnTop');
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY>300) topBtn.classList.add('show'); else topBtn.classList.remove('show');
+    });
+  }
+
+  function bindEditToggle(){
+    const btnEdit=U('#btnEdit');
+    const adminBar=U('#adminBar');
+    const panel=U('#panel');
+    L(btnEdit,'click',async()=>{
+      const already=sessionStorage.getItem('CPHS_ADMIN')==='1';
+      if(!already){ const ok=await requirePIN(); if(!ok) return; }
+      document.body.classList.toggle('edit-on');
+      const on=document.body.classList.contains('edit-on');
+      btnEdit.textContent= on ? '✅ Edición ACTIVA' : '⚙️ Modo edición';
+      adminBar.style.display= on ? 'flex' : 'none';
+      panel.style.display='none';
+      renderAll();
+    });
+  }
+
+  function bindAdminPanel(){
+    L(U('#btnAdmin'),'click',()=>{ const panel=U('#panel'); panel.style.display = panel.style.display==='block'?'none':'block'; });
+    L(U('#btnBackup'),'click',()=>{
+      const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='content.json';a.click();URL.revokeObjectURL(a.href);
+    });
+    L(U('#fileRestore'),'change',e=>{
+      const f=e.target.files&&e.target.files[0]; if(!f) return;
+      const rd=new FileReader();
+      rd.onload=()=>{ try{ data=JSON.parse(rd.result); renderAll(); alert('Vista previa cargada. Exporta para publicar.'); } catch(err){ alert('Archivo inválido'); } };
+      rd.readAsText(f);
+    });
+    L(U('#btnReload'),'click',async()=>{ try{ data=await fetchContent(); renderAll(); alert('Contenido recargado desde content.json'); } catch(e){ alert('No se pudo recargar'); } });
+  }
+
+  // **Robust binding for Add/Edit buttons using event delegation**
+  function bindAddButtons(){
+    document.body.addEventListener('click', (e)=>{
+      const t = e.target;
+      if(t.id==='addIntegrante'){ openModal('#mIntegr'); temp.eI=null; U('#iNom').value=''; U('#iRol').value=''; return; }
+      if(t.id==='addNoticia'){ openModal('#mNoticia'); temp.eN=null; U('#nTit').value=''; U('#nFec').value=''; U('#nDes').value=''; return; }
+      if(t.id==='addActividad'){ openModal('#mAct'); temp.eA=null; U('#aDes').value=''; return; }
+      if(t.id==='addMaterial'){ openModal('#mMat'); temp.eM=null; U('#mTit').value=''; U('#mUrl').value=''; return; }
+      const en=t.getAttribute('data-en'), dn=t.getAttribute('data-dn');
+      const ei=t.getAttribute('data-ei'), di=t.getAttribute('data-di');
+      const ea=t.getAttribute('data-ea'), da=t.getAttribute('data-da');
+      const em=t.getAttribute('data-em'), dm=t.getAttribute('data-dm');
+      if(en!==null){ temp.eN=Number(en); const n=data.noticias[temp.eN]; U('#nTit').value=n.titulo||''; U('#nFec').value=n.fecha||''; U('#nDes').value=n.desc||''; openModal('#mNoticia'); return; }
+      if(dn!==null){ if(confirm('¿Eliminar noticia?')){ data.noticias.splice(Number(dn),1); renderAll(); } return; }
+      if(ei!==null){ temp.eI=Number(ei); const it=data.integrantes[temp.eI]; U('#iNom').value=it.nombre||''; U('#iRol').value=it.rol||''; openModal('#mIntegr'); return; }
+      if(di!==null){ if(confirm('¿Eliminar integrante?')){ data.integrantes.splice(Number(di),1); renderAll(); } return; }
+      if(ea!==null){ temp.eA=Number(ea); const ac=data.actividades[temp.eA]; U('#aDes').value=ac.desc||''; openModal('#mAct'); return; }
+      if(da!==null){ if(confirm('¿Eliminar actividad?')){ data.actividades.splice(Number(da),1); renderAll(); } return; }
+      if(em!==null){ temp.eM=Number(em); const m=data.materiales[temp.eM]; U('#mTit').value=m.titulo||''; U('#mUrl').value=m.href||''; openModal('#mMat'); return; }
+      if(dm!==null){ if(confirm('¿Eliminar material?')){ data.materiales.splice(Number(dm),1); renderAll(); } return; }
+      const closeSel=t.getAttribute('data-close');
+      if(closeSel){ closeModal(closeSel); return; }
+    });
+
+    // Guardar botones de modales
+    L(document,'click',(e)=>{
+      const t=e.target;
+      if(t.id==='iGuardar'){ const nombre=U('#iNom').value.trim(), rol=U('#iRol').value.trim(); if(!nombre){alert('Nombre obligatorio');return;} const obj={nombre,rol}; if(temp.eI!==null) data.integrantes[temp.eI]=obj; else data.integrantes.push(obj); closeModal('#mIntegr'); renderAll(); }
+      if(t.id==='nGuardar'){ const titulo=U('#nTit').value.trim(), fecha=U('#nFec').value, desc=U('#nDes').value.trim(); if(!titulo||!fecha){alert('Título y fecha obligatorios');return;} const obj={titulo,fecha,desc}; if(temp.eN!==null) data.noticias[temp.eN]=obj; else data.noticias.push(obj); closeModal('#mNoticia'); renderAll(); }
+      if(t.id==='aGuardar'){ const desc=U('#aDes').value.trim(); if(!desc){alert('Descripción obligatoria');return;} const obj={desc}; if(temp.eA!==null) data.actividades[temp.eA]=obj; else data.actividades.push(obj); closeModal('#mAct'); renderAll(); }
+      if(t.id==='mGuardar'){ const titulo=U('#mTit').value.trim(), href=U('#mUrl').value.trim(); if(!titulo){alert('Título obligatorio');return;} const obj={titulo,href}; if(temp.eM!==null) data.materiales[temp.eM]=obj; else data.materiales.push(obj); closeModal('#mMat'); renderAll(); }
+    });
+  }
+
+  const temp={ eI:null, eN:null, eA:null, eM:null };
+
+  function openModal(sel){ const el=U(sel); if(el){ el.style.display='flex'; } }
+  function closeModal(sel){ const el=U(sel); if(el){ el.style.display='none'; } }
+
+  function renderIntegrantes(){ const ul=U('#listaIntegrantes'); ul.innerHTML=''; data.integrantes.forEach((it,idx)=>{ const li=document.createElement('li'); li.textContent=`${it.nombre} — ${it.rol||'Integrante'}`; if(document.body.classList.contains('edit-on')){ const s=document.createElement('span'); s.style.marginLeft='8px'; s.innerHTML=`<button class="btn bamb" data-ei="${idx}">Editar</button> <button class="btn bdan" data-di="${idx}">Eliminar</button>`; li.appendChild(s);} ul.appendChild(li); }); }
+  function renderActividades(){ const ul=U('#listaActividades'); ul.innerHTML=''; data.actividades.forEach((ac,idx)=>{ const li=document.createElement('li'); li.textContent=ac.desc; if(document.body.classList.contains('edit-on')){ const s=document.createElement('span'); s.style.marginLeft='8px'; s.innerHTML=`<button class="btn bamb" data-ea="${idx}">Editar</button> <button class="btn bdan" data-da="${idx}">Eliminar</button>`; li.appendChild(s);} ul.appendChild(li); }); }
+  function renderMateriales(){ const ul=U('#listaMateriales'); ul.innerHTML=''; data.materiales.forEach((m,idx)=>{ const li=document.createElement('li'); li.innerHTML=`<a href="${m.href||'#'}" download>${m.titulo}</a>`; if(document.body.classList.contains('edit-on')){ const s=document.createElement('span'); s.style.marginLeft='8px'; s.innerHTML=`<button class="btn bamb" data-em="${idx}">Editar</button> <button class="btn bdan" data-dm="${idx}">Eliminar</button>`; li.appendChild(s);} ul.appendChild(li); }); }
+  function renderNoticias(){ const c=U('#cards'); c.innerHTML=''; [...data.noticias].sort((a,b)=> (b.fecha||'').localeCompare(a.fecha||''))
+      .forEach((n)=>{ const card=document.createElement('article'); card.className='card'; card.innerHTML=`<time datetime="${n.fecha||''}">${formatDate(n.fecha)}</time><h3>${n.titulo}</h3><p>${n.desc||''}</p>`; if(document.body.classList.contains('edit-on')){ const idx=data.noticias.indexOf(n); const box=document.createElement('div'); box.style.position='absolute'; box.style.top='10px'; box.style.right='10px'; box.style.display='flex'; box.style.gap='6px'; box.innerHTML=`<button class="btn bamb" data-en="${idx}">Editar</button> <button class="btn bdan" data-dn="${idx}">Eliminar</button>`; card.appendChild(box);} c.appendChild(card); }); }
+  function renderAll(){ renderIntegrantes(); renderActividades(); renderMateriales(); renderNoticias(); }
+
+  function formatDate(iso){ if(!iso) return ''; const d=new Date(iso); if(Number.isNaN(d.getTime())) return iso; return d.toLocaleDateString('es-CL',{day:'2-digit',month:'long',year:'numeric'}); }
+
+  async function fetchContent(){ const r=await fetch(CONTENT_URL,{cache:'no-cache'}); if(!r.ok) throw new Error('No se pudo cargar content.json'); return r.json(); }
+
+  async function sha256Hex(t){ const d=new TextEncoder().encode(t); const h=await crypto.subtle.digest('SHA-256',d); return Array.from(new Uint8Array(h)).map(b=>b.toString(16).padStart(2,'0')).join(''); }
+  async function requirePIN(){ const p=prompt('Ingresa tu PIN para activar el modo edición:'); if(!p) return false; try{ const hx=await sha256Hex(p); if(hx===PIN_HASH_HEX){ sessionStorage.setItem('CPHS_ADMIN','1'); return true; } }catch(e){} alert('PIN incorrecto.'); return false; }
+
+  async function setLastUpdated(){ try{ const dt=new Date(document.lastModified); U('#lastUpdated').textContent = dt.toLocaleDateString('es-CL',{day:'2-digit',month:'long',year:'numeric'}); }catch(e){} }
+})();
+</script>
+
+<!-- Modales -->
+<div class="modal" id="mNoticia"><div class="box"><h3>Noticia</h3><div style="display:grid;gap:10px;grid-template-columns:1fr 1fr"><label>Título<br><input id="nTit" class="form-control"></label><label>Fecha<br><input id="nFec" class="form-control" type="date"></label></div><label>Descripción<br><textarea id="nDes" class="form-control" rows="4"></textarea></label><div style="text-align:right;margin-top:10px"><button class="btn bout" data-close="#mNoticia">Cancelar</button> <button class="btn bpri" id="nGuardar">Guardar</button></div></div></div>
+<div class="modal" id="mIntegr"><div class="box"><h3>Integrante</h3><div style="display:grid;gap:10px;grid-template-columns:1fr 1fr"><label>Nombre<br><input id="iNom" class="form-control"></label><label>Rol<br><input id="iRol" class="form-control"></label></div><div style="text-align:right;margin-top:10px"><button class="btn bout" data-close="#mIntegr">Cancelar</button> <button class="btn bpri" id="iGuardar">Guardar</button></div></div></div>
+<div class="modal" id="mAct"><div class="box"><h3>Actividad</h3><label>Descripción<br><input id="aDes" class="form-control"></label><div style="text-align:right;margin-top:10px"><button class="btn bout" data-close="#mAct">Cancelar</button> <button class="btn bpri" id="aGuardar">Guardar</button></div></div></div>
+<div class="modal" id="mMat"><div class="box"><h3>Material</h3><div style="display:grid;gap:10px;grid-template-columns:1fr 1fr"><label>Título<br><input id="mTit" class="form-control"></label><label>URL/archivo<br><input id="mUrl" class="form-control" placeholder="https://..."></label></div><div style="text-align:right;margin-top:10px"><button class="btn bout" data-close="#mMat">Cancelar</button> <button class="btn bpri" id="mGuardar">Guardar</button></div></div></div>
+</body>
+</html>
