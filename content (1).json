@@ -1,0 +1,45 @@
+{
+  "integrantes": [
+    {
+      "nombre": "Pamela Velasquez Torres",
+      "rol": "Presidencia (2024–2026)"
+    },
+    {
+      "nombre": "Nombre Apellido",
+      "rol": "Secretaría"
+    }
+  ],
+  "actividades": [
+    {
+      "desc": "Inspecciones preventivas periódicas"
+    },
+    {
+      "desc": "Charlas de seguridad trimestrales"
+    },
+    {
+      "desc": "Simulacros de evacuación"
+    }
+  ],
+  "materiales": [
+    {
+      "titulo": "Guía de uso de EPP (PDF)",
+      "href": "#"
+    },
+    {
+      "titulo": "Procedimiento de evacuación (PDF)",
+      "href": "#"
+    }
+  ],
+  "noticias": [
+    {
+      "titulo": "Capacitación “Uso de extintores”",
+      "fecha": "2026-03-10",
+      "desc": "Práctica guiada de manejo de extintores portátiles."
+    },
+    {
+      "titulo": "Campaña “Evita caídas en superficie húmeda”",
+      "fecha": "2026-03-05",
+      "desc": "Señalética preventiva y repaso de procedimientos."
+    }
+  ]
+}
