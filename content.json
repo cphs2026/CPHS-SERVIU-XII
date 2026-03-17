@@ -5,8 +5,24 @@
       "rol": "Presidencia (2024–2026)"
     },
     {
-      "nombre": "Nombre Apellido",
-      "rol": "Secretaría"
+      "nombre": "Sofía Soto Tapia",
+      "rol": "Secretaria"
+    },
+    {
+      "nombre": "Jorge Farías Arriagada",
+      "rol": ""
+    },
+    {
+      "nombre": "Ignacio Zúñiga Machuca",
+      "rol": ""
+    },
+    {
+      "nombre": "Hugo Bahamonde Millán",
+      "rol": ""
+    },
+    {
+      "nombre": "Brenda Valenzuela Muñoz",
+      "rol": ""
     }
   ],
   "actividades": [
@@ -14,7 +30,7 @@
       "desc": "Inspecciones preventivas periódicas"
     },
     {
-      "desc": "Charlas de seguridad trimestrales"
+      "desc": "Reuniones mensuales"
     },
     {
       "desc": "Simulacros de evacuación"
@@ -23,10 +39,6 @@
   "materiales": [
     {
       "titulo": "Guía de uso de EPP (PDF)",
-      "href": "#"
-    },
-    {
-      "titulo": "Procedimiento de evacuación (PDF)",
       "href": "#"
     }
   ],
