@@ -92,15 +92,59 @@ footer{margin-top:28px;background:#0f2640;color:#dbe7f3;border-top:4px solid var
   <section id="reporte">
   <h2>Reporte de Incidentes</h2>
 
-  <p>Use el siguiente botón para enviar un reporte por correo:</p>
+  <form onsubmit="return enviarReportePorCorreo(event)">
+    <label>Nombre (opcional)<br>
+      <input id="rep-nombre" class="form-control" type="text">
+    </label>
+    <br><br>
 
-  <a class="btn bpri"
-     href="mailto:TU_CORREO@dominio.cl?subject=Reporte%20CPHS&body=Hola,%20quiero%20Enviar reporte por correo
-  </a>
+    <label>Descripción del incidente/condición<br>
+      <textarea id="rep-descripcion" class="form-control" rows="4" required></textarea>
+    </label>
+    <br><br>
 
-  <p style="margin-top:1rem; font-size:0.9rem; opacity:.7;">
-    *Se abrirá tu aplicación de correo para redactar y enviar el reporte.
-  </p>
+    <label>Ubicación<br>
+      <input id="rep-ubicacion" class="form-control" type="text">
+    </label>
+    <br><br>
+
+    <button class="btn bpri" type="submit">Enviar reporte</button>
+  </form>
+
+  <script>
+    function enviarReportePorCorreo(e) {
+      e.preventDefault();
+
+      // Correo de destino proporcionado por ti
+      const correoDestino = "pvelasquezt@minvu.cl";
+
+      // Tomamos los valores del formulario
+      const nombre = document.getElementById('rep-nombre').value.trim();
+      const descripcion = document.getElementById('rep-descripcion').value.trim();
+      const ubicacion = document.getElementById('rep-ubicacion').value.trim();
+
+      // Armamos asunto y cuerpo del correo
+      const asunto = "Reporte CPHS";
+      const NL = "%0D%0A"; // salto de línea compatible con mailto
+
+      let cuerpo = "Nuevo reporte de incidente:" + NL + NL;
+      if (nombre)    cuerpo += "Nombre: " + encodeURIComponent(nombre) + NL;
+      if (ubicacion) cuerpo += "Ubicación: " + encodeURIComponent(ubicacion) + NL;
+      if (descripcion) {
+        cuerpo += NL + "Descripción:" + NL + encodeURIComponent(descripcion) + NL;
+      }
+
+      // Construimos el enlace mailto
+      const mailtoURL = `mailto:${correoDestino}?subject=${encodeURIComponent(asunto)}&body=${cuerpo}`;
+
+      // Abrimos el cliente de correo
+      window.location.href = mailtoURL;
+
+      // Mensaje opcional de feedback
+      alert('Se abrirá tu aplicación de correo con el reporte prellenado.');
+      return false;
+    }
+  </script>
 </section>
   <section id="contacto"><h2>Contacto</h2><p><strong>Comité Paritario — SERVIU Magallanes</strong><br>Croacia 722, Punta Arenas, Magallanes y de la Antártica Chilena.<br>Teléfono: +56 61 2714506.<br>Email: <a href="mailto:pvelasquezt@minvu.cl">pvelasquezt@minvu.cl</a></p></section>
 </main>
